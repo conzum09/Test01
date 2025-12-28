@@ -1,124 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Basic Website</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IntelliBot Systems</title>
+
     <style>
+        /* ---------- GLOBAL STYLES ---------- */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+            background: #0a0f1a;
+            color: #e6e9ef;
+            line-height: 1.6;
         }
-        header {
-            background: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background: #444;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
+
+        a {
             text-decoration: none;
-            font-weight: bold;
+            color: inherit;
         }
-        section {
-            padding: 40px;
-            max-width: 800px;
-            margin: auto;
-            background: white;
+
+        h1, h2, h3 {
+            margin: 0;
         }
-        footer {
-            background: #333;
-            color: white;
+
+        /* ---------- NAVBAR ---------- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4cc9f0;
+        }
+
+        nav .cta-btn {
+            padding: 10px 20px;
+            background: #4cc9f0;
+            color: #0a0f1a;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .hero {
             text-align: center;
-            padding: 15px;
-            margin-top: 40px;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, #0a0f1a, #112240);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.85;
+        }
+
+        .hero .hero-btn {
+            padding: 14px 30px;
+            background: #4cc9f0;
+            color: #0a0f1a;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* ---------- FEATURES SECTION ---------- */
+        .features {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #111827;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #1f2937;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #4cc9f0;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #4cc9f0;
+        }
+
+        /* ---------- PRICING SECTION ---------- */
+        .pricing {
+            padding: 80px 40px;
+            background: #0d1320;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .price-card {
+            background: #111827;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #1f2937;
+            text-align: center;
+        }
+
+        .price-card h3 {
+            margin-bottom: 10px;
+            color: #4cc9f0;
+        }
+
+        .price-card .price {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .price-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .price-card ul li {
+            margin: 10px 0;
+            opacity: 0.85;
+        }
+
+        .price-card .price-btn {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 12px 25px;
+            background: #4cc9f0;
+            color: #0a0f1a;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #0a0f1a;
+            opacity: 0.7;
         }
     </style>
-    
-<!-- In your <head> tag -->
-<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
-<style>
-  #webchat .bpWebchat {
-    position: unset;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    max-width: 100%;
-  }
-
-  #webchat .bpFab {
-    display: none;
-  }
-</style>
-
-<!-- Put this on your page BEFORE the script below -->
-<div id="webchat" style="width: 500px; height: 500px;"></div>
-    
 </head>
+
 <body>
 
-    <header>
-        <h1>Welcome to My Website</h1>
-        <p>A simple starter layout</p>
-    </header>
-
+    <!-- NAVBAR -->
     <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <div class="logo">IntelliBot Systems</div>
+        <a href="#pricing" class="cta-btn">Get Started</a>
     </nav>
 
-    <section>
-        <h2>About This Site</h2>
-        <p>This is a basic website template you can customize however you like. Add your own text, images, pages, or styles to make it your own.</p>
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Automate Your FAQs With Intelligent AI</h1>
+        <p>IntelliBot Systems builds smart, reliable FAQ bots that reduce support workload, boost conversions, and deliver instant answers 24/7.</p>
+        <a href="#pricing" class="hero-btn">Build My Bot</a>
     </section>
 
+    <!-- FEATURES -->
+    <section class="features">
+        <h2>Why Choose IntelliBot Systems</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>24/7 Automation</h3>
+                <p>Your customers get instant answers anytime, without waiting for human support.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Custom‑Trained AI</h3>
+                <p>We train your bot on your business data for accurate, brand‑aligned responses.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Easy Integration</h3>
+                <p>Embed your FAQ bot on any website with a simple copy‑paste script.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Analytics Dashboard</h3>
+                <p>Track customer questions, bot performance, and engagement insights.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <h2>Simple, Transparent Pricing</h2>
+
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Starter</h3>
+                <div class="price">$49/mo</div>
+                <ul>
+                    <li>1 Custom FAQ Bot</li>
+                    <li>Basic Training</li>
+                    <li>Email Support</li>
+                </ul>
+                <a href="#" class="price-btn">Choose Plan</a>
+            </div>
+
+            <div class="price-card">
+                <h3>Pro</h3>
+                <div class="price">$99/mo</div>
+                <ul>
+                    <li>3 Custom FAQ Bots</li>
+                    <li>Advanced Training</li>
+                    <li>Analytics Dashboard</li>
+                </ul>
+                <a href="#" class="price-btn">Choose Plan</a>
+            </div>
+
+            <div class="price-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <ul>
+                    <li>Unlimited Bots</li>
+                    <li>Full AI Training</li>
+                    <li>Priority Support</li>
+                </ul>
+                <a href="#" class="price-btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2025 My Website</p>
+        © 2025 IntelliBot Systems — All Rights Reserved
     </footer>
-<!-- In your <body> tag -->
-<script>
-  window.botpress.on("webchat:ready", () => {
-    window.botpress.open();
-  });
-  window.botpress.init({
-  "botId": "922e83bb-f459-4db1-9b94-fb4acdd7f792",
-  "configuration": {
-    "version": "v2",
-    "botName": "Intellibook Assistant",
-    "botAvatar": "https://files.bpcontent.cloud/2025/12/27/04/20251227041341-53ZHZWOJ.png",
-    "botDescription": "",
-    "website": {},
-    "email": {},
-    "phone": {},
-    "termsOfService": {},
-    "privacyPolicy": {},
-    "color": "#FF6A00",
-    "variant": "solid",
-    "headerVariant": "glass",
-    "themeMode": "light",
-    "fontFamily": "inter",
-    "radius": 1.5,
-    "feedbackEnabled": false,
-    "footer": "[⚡ by Botpress](https://botpress.com/?from=webchat)",
-    "soundEnabled": false,
-    "proactiveMessageEnabled": false,
-    "proactiveBubbleMessage": "Hi! 👋 Need help?",
-    "proactiveBubbleTriggerType": "afterDelay",
-    "proactiveBubbleDelayTime": 10
-  },
-  "clientId": "7fc83d23-021b-480e-aedb-ecfc335684c5",
-  "selector": "#webchat"
-});
-</script>
 
 </body>
 </html>

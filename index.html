@@ -6,42 +6,23 @@
     <title>IntelliBot Systems</title>
 
     <style>
-        /* ---------- GLOBAL STYLES ---------- */
+        /* ---------- GLOBAL ---------- */
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0a0f1a, #112240);
-            background-size: 200% 200%;
-            animation: bgMove 12s ease infinite;
-            color: #e6e9ef;
+            font-family: "Inter", sans-serif;
+            background: #ffffff;
+            color: #111;
             line-height: 1.6;
         }
 
-        @keyframes bgMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        h1, h2, h3 {
+            font-weight: 600;
+            margin: 0;
         }
 
         a {
             text-decoration: none;
             color: inherit;
-        }
-
-        h1, h2, h3 {
-            margin: 0;
-        }
-
-        /* ---------- ANIMATION CLASSES ---------- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.8s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* ---------- NAVBAR ---------- */
@@ -50,270 +31,259 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background: rgba(10, 15, 26, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            border-bottom: 1px solid #eee;
         }
 
-        nav .logo {
-            font-size: 1.5rem;
+        .logo {
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #4cc9f0;
         }
 
-        nav .cta-btn {
+        .cta-btn {
             padding: 10px 20px;
-            background: #4cc9f0;
-            color: #0a0f1a;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: 0.3s;
+            border: 1px solid #111;
+            border-radius: 4px;
+            transition: 0.2s;
         }
 
-        nav .cta-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 12px #4cc9f0;
+        .cta-btn:hover {
+            background: #111;
+            color: #fff;
         }
 
-        /* ---------- HERO SECTION ---------- */
+        /* ---------- HERO ---------- */
         .hero {
-            text-align: center;
             padding: 120px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin-bottom: 20px;
-            animation: fadeUp 1s ease-out forwards;
             opacity: 0;
+            animation: fadeIn 1s ease forwards;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0;
-            animation: fadeUp 1.4s ease-out forwards;
-        }
-
-        .hero .hero-btn {
-            padding: 14px 30px;
-            background: #4cc9f0;
-            color: #0a0f1a;
-            border-radius: 8px;
             font-size: 1.1rem;
-            font-weight: 600;
             opacity: 0;
-            animation: fadeUp 1.8s ease-out forwards;
-            transition: 0.3s;
+            animation: fadeIn 1.4s ease forwards;
         }
 
-        .hero .hero-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 18px #4cc9f0;
+        .hero-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 28px;
+            border: 1px solid #111;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: 0.2s;
+            opacity: 0;
+            animation: fadeIn 1.8s ease forwards;
         }
 
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .hero-btn:hover {
+            background: #111;
+            color: #fff;
         }
 
-        /* ---------- FEATURES SECTION ---------- */
+        /* ---------- FEATURES ---------- */
         .features {
-            padding: 80px 40px;
-            max-width: 1200px;
+            padding: 80px 20px;
+            max-width: 1100px;
             margin: auto;
         }
 
         .features h2 {
             text-align: center;
             margin-bottom: 50px;
-            font-size: 2.2rem;
+            font-size: 2rem;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
         }
 
         .feature-card {
-            background: #111827;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #1f2937;
-            transition: 0.3s;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            transition: 0.2s;
+            opacity: 0;
         }
 
         .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: #4cc9f0;
-            box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+            border-color: #111;
         }
 
-        /* ---------- PRICING SECTION ---------- */
+        /* ---------- PRICING ---------- */
         .pricing {
-            padding: 80px 40px;
-            background: #0d1320;
+            padding: 80px 20px;
+            background: #fafafa;
         }
 
         .pricing h2 {
             text-align: center;
             margin-bottom: 50px;
-            font-size: 2.2rem;
+            font-size: 2rem;
         }
 
         .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
         }
 
         .price-card {
-            background: #111827;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #1f2937;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 6px;
             text-align: center;
-            transition: 0.3s;
+            transition: 0.2s;
+            opacity: 0;
         }
 
         .price-card:hover {
-            transform: translateY(-8px);
-            border-color: #4cc9f0;
-            box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+            border-color: #111;
         }
 
-        .price-card .price-btn {
-            margin-top: 20px;
+        .price {
+            font-size: 1.8rem;
+            margin: 20px 0;
+        }
+
+        .price-btn {
             display: inline-block;
-            padding: 12px 25px;
-            background: #4cc9f0;
-            color: #0a0f1a;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: 0.3s;
+            margin-top: 20px;
+            padding: 10px 22px;
+            border: 1px solid #111;
+            border-radius: 4px;
+            transition: 0.2s;
         }
 
-        .price-card .price-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 18px #4cc9f0;
+        .price-btn:hover {
+            background: #111;
+            color: #fff;
         }
 
         /* ---------- FOOTER ---------- */
         footer {
             text-align: center;
             padding: 40px;
-            background: #0a0f1a;
-            opacity: 0.7;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* ---------- ANIMATIONS ---------- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s ease;
+        }
+
+        .fade.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
     <nav>
         <div class="logo">IntelliBot Systems</div>
-        <a href="#pricing" class="cta-btn">Get Started</a>
+        <a class="cta-btn" href="#pricing">Get Started</a>
     </nav>
 
-    <!-- HERO -->
     <section class="hero">
-        <h1>Automate Your FAQs With Intelligent AI</h1>
-        <p>IntelliBot Systems builds smart, reliable FAQ bots that reduce support workload, boost conversions, and deliver instant answers 24/7.</p>
+        <h1>Smarter FAQ Automation for Modern Businesses</h1>
+        <p>Minimal, fast, and intelligent. IntelliBot Systems builds clean, efficient FAQ bots that reduce support load and improve customer experience.</p>
         <a href="#pricing" class="hero-btn">Build My Bot</a>
     </section>
 
-    <!-- FEATURES -->
     <section class="features">
-        <h2 class="fade-in">Why Choose IntelliBot Systems</h2>
+        <h2>What We Offer</h2>
 
         <div class="feature-grid">
-            <div class="feature-card fade-in">
-                <h3>24/7 Automation</h3>
-                <p>Your customers get instant answers anytime, without waiting for human support.</p>
+            <div class="feature-card fade">
+                <h3>Instant Answers</h3>
+                <p>Provide customers with immediate responses without overwhelming your team.</p>
             </div>
 
-            <div class="feature-card fade-in">
-                <h3>Custom‑Trained AI</h3>
-                <p>We train your bot on your business data for accurate, brand‑aligned responses.</p>
+            <div class="feature-card fade">
+                <h3>Clean Integration</h3>
+                <p>Embed your bot anywhere with a simple, lightweight script.</p>
             </div>
 
-            <div class="feature-card fade-in">
-                <h3>Easy Integration</h3>
-                <p>Embed your FAQ bot on any website with a simple copy‑paste script.</p>
+            <div class="feature-card fade">
+                <h3>Smart Training</h3>
+                <p>Your bot learns from your content and improves over time.</p>
             </div>
 
-            <div class="feature-card fade-in">
-                <h3>Analytics Dashboard</h3>
-                <p>Track customer questions, bot performance, and engagement insights.</p>
+            <div class="feature-card fade">
+                <h3>Zero Clutter</h3>
+                <p>A minimalist interface that blends seamlessly into your brand.</p>
             </div>
         </div>
     </section>
 
-    <!-- PRICING -->
     <section class="pricing" id="pricing">
-        <h2 class="fade-in">Simple, Transparent Pricing</h2>
+        <h2>Pricing</h2>
 
         <div class="pricing-grid">
-            <div class="price-card fade-in">
+            <div class="price-card fade">
                 <h3>Starter</h3>
                 <div class="price">$49/mo</div>
-                <ul>
-                    <li>1 Custom FAQ Bot</li>
-                    <li>Basic Training</li>
-                    <li>Email Support</li>
-                </ul>
-                <a href="#" class="price-btn">Choose Plan</a>
+                <p>1 FAQ Bot</p>
+                <p>Email Support</p>
+                <a class="price-btn" href="#">Choose Plan</a>
             </div>
 
-            <div class="price-card fade-in">
+            <div class="price-card fade">
                 <h3>Pro</h3>
                 <div class="price">$99/mo</div>
-                <ul>
-                    <li>3 Custom FAQ Bots</li>
-                    <li>Advanced Training</li>
-                    <li>Analytics Dashboard</li>
-                </ul>
-                <a href="#" class="price-btn">Choose Plan</a>
+                <p>3 FAQ Bots</p>
+                <p>Advanced Training</p>
+                <a class="price-btn" href="#">Choose Plan</a>
             </div>
 
-            <div class="price-card fade-in">
+            <div class="price-card fade">
                 <h3>Enterprise</h3>
                 <div class="price">Custom</div>
-                <ul>
-                    <li>Unlimited Bots</li>
-                    <li>Full AI Training</li>
-                    <li>Priority Support</li>
-                </ul>
-                <a href="#" class="price-btn">Contact Us</a>
+                <p>Unlimited Bots</p>
+                <p>Priority Support</p>
+                <a class="price-btn" href="#">Contact Us</a>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         © 2025 IntelliBot Systems — All Rights Reserved
     </footer>
 
-    <!-- SCROLL ANIMATION SCRIPT -->
     <script>
-        const elements = document.querySelectorAll('.fade-in');
+        const fadeEls = document.querySelectorAll(".fade");
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add("visible");
                 }
             });
         }, { threshold: 0.2 });
 
-        elements.forEach(el => observer.observe(el));
+        fadeEls.forEach(el => observer.observe(el));
     </script>
 
 </body>

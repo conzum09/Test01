@@ -16,53 +16,49 @@
     display: none;
   }
 </style>
-    
 </head>
 
-    
 <body>
     <h1>Welcome to my website</h1>
     <p>This is a basic webpage.</p>
+
+    <!-- ⭐ REQUIRED: This is the missing container -->
+    <div id="webchat"></div>
+
     <script>
-  window.botpress.on("webchat:ready", () => {
-    window.botpress.open();
-  });
-  window.botpress.init({
-  "botId": "554532cd-4085-498a-803e-2f998c5952bf",
-  "configuration": {
-    "version": "v2",
-    "botName": "Folk Coffee Assistant",
-    "botAvatar": "https://files.bpcontent.cloud/2025/12/27/05/20251227052304-WIICF70R.png",
-    "botDescription": "",
-    "website": {},
-    "email": {},
-    "phone": {},
-    "termsOfService": {},
-    "privacyPolicy": {},
-    "color": "#112534",
-    "variant": "solid",
-    "headerVariant": "glass",
-    "themeMode": "light",
-    "fontFamily": "inter",
-    "radius": 1.5,
-    "feedbackEnabled": false,
-    "footer": "[⚡ by Botpress](https://botpress.com/?from=webchat)",
-    "soundEnabled": false,
-    "proactiveMessageEnabled": false,
-    "proactiveBubbleMessage": "Hi! 👋 Need help?",
-    "proactiveBubbleTriggerType": "afterDelay",
-    "proactiveBubbleDelayTime": 10
-  },
-  "clientId": "e8875d05-7797-43e8-9deb-591fd37a86bf",
-  "selector": "#webchat"
-});
-</script>
+      window.botpress.on("webchat:ready", () => {
+        window.botpress.open();
+      });
+
+      window.botpress.init({
+        "botId": "554532cd-4085-498a-803e-2f998c5952bf",
+        "configuration": {
+          "version": "v2",
+          "botName": "Folk Coffee Assistant",
+          "botAvatar": "https://files.bpcontent.cloud/2025/12/27/05/20251227052304-WIICF70R.png",
+          "botDescription": "",
+          "website": {},
+          "email": {},
+          "phone": {},
+          "termsOfService": {},
+          "privacyPolicy": {},
+          "color": "#112534",
+          "variant": "solid",
+          "headerVariant": "glass",
+          "themeMode": "light",
+          "fontFamily": "inter",
+          "radius": 1.5,
+          "feedbackEnabled": false,
+          "footer": "[⚡ by Botpress](https://botpress.com/?from=webchat)",
+          "soundEnabled": false,
+          "proactiveMessageEnabled": false,
+          "proactiveBubbleMessage": "Hi! 👋 Need help?",
+          "proactiveBubbleTriggerType": "afterDelay",
+          "proactiveBubbleDelayTime": 10
+        },
+        "clientId": "e8875d05-7797-43e8-9deb-591fd37a86bf",
+        "selector": "#webchat"
+      });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-

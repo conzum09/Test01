@@ -1,118 +1,291 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Folk Coffee</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IntelliBot Systems</title>
 
-  <!-- Botpress Webchat -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
+    <style>
+        /* ---------- GLOBAL ---------- */
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: #ffffff;
+            color: #111;
+            line-height: 1.6;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Inter, sans-serif;
-      background: #ffffff;
-      color: #112534;
-    }
+        h1, h2, h3 {
+            font-weight: 600;
+            margin: 0;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 120px 20px;
-      text-align: center;
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
+        /* ---------- NAVBAR ---------- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #eee;
+        }
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      max-width: 650px;
-      margin: 0 auto 40px auto;
-      color: #3a4a55;
-    }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
 
-    .cta {
-      display: inline-block;
-      padding: 14px 28px;
-      background: #112534;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      transition: 0.2s ease;
-    }
+        .cta-btn {
+            padding: 10px 20px;
+            border: 1px solid #111;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
 
-    .cta:hover {
-      background: #1b3a4d;
-    }
+        .cta-btn:hover {
+            background: #111;
+            color: #fff;
+        }
 
-    /* Floating hint above the chat bubble */
-    .bot-hint {
-      position: fixed;
-      bottom: 110px;
-      right: 30px;
-      background: #112534;
-      color: #ffffff;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      opacity: 0.9;
-      animation: float 3s ease-in-out infinite;
-      z-index: 9999;
-    }
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 120px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-      100% { transform: translateY(0); }
-    }
-  </style>
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0;
+            animation: fadeIn 1.4s ease forwards;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 28px;
+            border: 1px solid #111;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: 0.2s;
+            opacity: 0;
+            animation: fadeIn 1.8s ease forwards;
+        }
+
+        .hero-btn:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        /* ---------- FEATURES ---------- */
+        .features {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            transition: 0.2s;
+            opacity: 0;
+        }
+
+        .feature-card:hover {
+            border-color: #111;
+        }
+
+        /* ---------- PRICING ---------- */
+        .pricing {
+            padding: 80px 20px;
+            background: #fafafa;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+        }
+
+        .pricing-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+        }
+
+        .price-card {
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            text-align: center;
+            transition: 0.2s;
+            opacity: 0;
+        }
+
+        .price-card:hover {
+            border-color: #111;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            margin: 20px 0;
+        }
+
+        .price-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 22px;
+            border: 1px solid #111;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+
+        .price-btn:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* ---------- ANIMATIONS ---------- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s ease;
+        }
+
+        .fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>Welcome to Folk Coffee</h1>
-    <p>
-      Have a question or want to place an order  
-      Just tap the chat bubble in the bottom‑right corner — our assistant is ready to help.
-    </p>
+    <nav>
+        <div class="logo">IntelliBot Systems</div>
+        <a class="cta-btn" href="#pricing">Get Started</a>
+    </nav>
 
-    <a class="cta">Start Chatting</a>
-  </div>
+    <section class="hero">
+        <h1>Smarter FAQ Automation for Modern Businesses</h1>
+        <p>Minimal, fast, and intelligent. IntelliBot Systems builds clean, efficient FAQ bots that reduce support load and improve customer experience.</p>
+        <a href="#pricing" class="hero-btn">Build My Bot</a>
+    </section>
 
-  <div class="bot-hint">
-    👋 Need help Chat with us!
-  </div>
+    <section class="features">
+        <h2>What We Offer</h2>
 
-  <!-- Your Botpress widget -->
-  <script>
-    window.botpress.init({
-      "botId": "554532cd-4085-498a-803e-2f998c5952bf",
-      "clientId": "e8875d05-7797-43e8-9deb-591fd37a86bf",
-      "configuration": {
-        "version": "v2",
-        "botName": "Folk Coffee Assistant",
-        "botAvatar": "https://files.bpcontent.cloud/2025/12/27/05/20251227052304-WIICF70R.png",
-        "color": "#112534",
-        "variant": "solid",
-        "headerVariant": "glass",
-        "themeMode": "light",
-        "fontFamily": "inter",
-        "radius": 1.5,
-        "feedbackEnabled": false,
-        "soundEnabled": false,
-        "proactiveMessageEnabled": false
-      }
-    });
-  </script>
+        <div class="feature-grid">
+            <div class="feature-card fade">
+                <h3>Instant Answers</h3>
+                <p>Provide customers with immediate responses without overwhelming your team.</p>
+            </div>
+
+            <div class="feature-card fade">
+                <h3>Clean Integration</h3>
+                <p>Embed your bot anywhere with a simple, lightweight script.</p>
+            </div>
+
+            <div class="feature-card fade">
+                <h3>Smart Training</h3>
+                <p>Your bot learns from your content and improves over time.</p>
+            </div>
+
+            <div class="feature-card fade">
+                <h3>Zero Clutter</h3>
+                <p>A minimalist interface that blends seamlessly into your brand.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2>Pricing</h2>
+
+        <div class="pricing-grid">
+            <div class="price-card fade">
+                <h3>Starter</h3>
+                <div class="price">$49/mo</div>
+                <p>1 FAQ Bot</p>
+                <p>Email Support</p>
+                <a class="price-btn" href="#">Choose Plan</a>
+            </div>
+
+            <div class="price-card fade">
+                <h3>Pro</h3>
+                <div class="price">$99/mo</div>
+                <p>3 FAQ Bots</p>
+                <p>Advanced Training</p>
+                <a class="price-btn" href="#">Choose Plan</a>
+            </div>
+
+            <div class="price-card fade">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <p>Unlimited Bots</p>
+                <p>Priority Support</p>
+                <a class="price-btn" href="#">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 IntelliBot Systems — All Rights Reserved
+    </footer>
+
+    <script>
+        const fadeEls = document.querySelectorAll(".fade");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, { threshold: 0.2 });
+
+        fadeEls.forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
+

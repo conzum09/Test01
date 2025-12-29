@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Folk Coffee</title>
+
+  <!-- Botpress Webchat -->
   <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
-  <title>Your Service</title>
 
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: Inter, sans-serif;
       background: #ffffff;
-      color: #111111;
+      color: #112534;
     }
 
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 80px 20px;
+      padding: 120px 20px;
       text-align: center;
     }
 
@@ -33,13 +35,13 @@
       line-height: 1.6;
       max-width: 650px;
       margin: 0 auto 40px auto;
-      color: #444444;
+      color: #3a4a55;
     }
 
     .cta {
       display: inline-block;
       padding: 14px 28px;
-      background: #111111;
+      background: #112534;
       color: #ffffff;
       text-decoration: none;
       border-radius: 6px;
@@ -48,14 +50,15 @@
     }
 
     .cta:hover {
-      background: #333333;
+      background: #1b3a4d;
     }
 
+    /* Floating hint above the chat bubble */
     .bot-hint {
       position: fixed;
       bottom: 110px;
       right: 30px;
-      background: #111111;
+      background: #112534;
       color: #ffffff;
       padding: 12px 18px;
       border-radius: 8px;
@@ -69,93 +72,45 @@
       50% { transform: translateY(-6px); }
       100% { transform: translateY(0); }
     }
-#webchat .bpWebchat {
-    position: unset;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    max-width: 100%;
-  }
-
-  #webchat .bpFab {
-    display: none;
-  }
-    
-
-<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
-<style>
-  #webchat .bpWebchat {
-    position: unset;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    max-width: 100%;
-  }
-
-  #webchat .bpFab {
-    display: none;
-  }
-</style>
-
-
-    
   </style>
 </head>
-
 
 <body>
 
   <div class="container">
-    <h1>Get the Service You Need, Instantly</h1>
+    <h1>Welcome to Folk Coffee</h1>
     <p>
-      No forms. No waiting. Just open the chat in the bottom‑right corner and tell us what you’re looking for. 
-      Our assistant will guide you through everything in seconds.
+      Have a question or want to place an order?  
+      Just tap the chat bubble in the bottom‑right corner — our assistant is ready to help.
     </p>
 
-    <a class="cta" href="#chat">Start Now</a>
+    <a class="cta">Start Chatting</a>
   </div>
 
   <div class="bot-hint">
     👋 Need help? Chat with us!
   </div>
-<script>
-  window.botpress.on("webchat:ready", () => {
-    window.botpress.open();
-  });
-  
-  <div id="webchat" style="width: 500px; height: 500px;"></div>
-  
-  window.botpress.init({
-  "botId": "554532cd-4085-498a-803e-2f998c5952bf",
-  "configuration": {
-    "version": "v2",
-    "botName": "Folk Coffee Assistant",
-    "botAvatar": "https://files.bpcontent.cloud/2025/12/27/05/20251227052304-WIICF70R.png",
-    "botDescription": "",
-    "website": {},
-    "email": {},
-    "phone": {},
-    "termsOfService": {},
-    "privacyPolicy": {},
-    "color": "#112534",
-    "variant": "solid",
-    "headerVariant": "glass",
-    "themeMode": "light",
-    "fontFamily": "inter",
-    "radius": 1.5,
-    "feedbackEnabled": false,
-    "footer": "[⚡ by Botpress](https://botpress.com/?from=webchat)",
-    "soundEnabled": false,
-    "proactiveMessageEnabled": false,
-    "proactiveBubbleMessage": "Hi! 👋 Need help?",
-    "proactiveBubbleTriggerType": "afterDelay",
-    "proactiveBubbleDelayTime": 10
-  },
-  "clientId": "e8875d05-7797-43e8-9deb-591fd37a86bf",
-  "selector": "#webchat"
-});
-</script>
 
-  <!-- Your Botpress widget script goes here -->
+  <script>
+    window.botpress.init({
+      "botId": "554532cd-4085-498a-803e-2f998c5952bf",
+      "clientId": "e8875d05-7797-43e8-9deb-591fd37a86bf",
+      "configuration": {
+        "version": "v2",
+        "botName": "Folk Coffee Assistant",
+        "botAvatar": "https://files.bpcontent.cloud/2025/12/27/05/20251227052304-WIICF70R.png",
+        "color": "#112534",
+        "variant": "solid",
+        "headerVariant": "glass",
+        "themeMode": "light",
+        "fontFamily": "inter",
+        "radius": 1.5,
+        "feedbackEnabled": false,
+        "soundEnabled": false,
+        "proactiveMessageEnabled": false
+      }
+    });
+  </script>
+
 </body>
 </html>

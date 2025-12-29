@@ -3,595 +3,228 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/12/27/05/20251227052119-HEGKQXPV.js" defer></script>
   <title>Your Business Name</title>
+
+  <!-- Botpress Webchat Scripts -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/12/27/05/20251227052119-HEGKQXPV.js" defer></script>
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
+    /* ---------- GLOBAL ---------- */
     body {
-      background: #f5f5f7;
-      color: #111827;
-      line-height: 1.5;
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
     }
 
+    h1, h2, h3 {
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    section {
+      padding: 6rem 8%;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    /* ---------- HEADER ---------- */
     header {
-      background: #0f172a;
-      color: #f9fafb;
-      padding: 1.2rem 8%;
+      padding: 1.5rem 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid #f1f1f1;
+      background: #ffffff;
       position: sticky;
       top: 0;
       z-index: 10;
     }
 
-    header .logo {
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
     header nav a {
-      color: #e5e7eb;
-      margin-left: 1.5rem;
+      margin-left: 2rem;
       text-decoration: none;
+      color: #444444;
       font-size: 0.95rem;
     }
 
     header nav a:hover {
-      color: #ffffff;
+      color: #000000;
     }
 
+    /* ---------- HERO ---------- */
     .hero {
-      padding: 4rem 8%;
+      padding: 10rem 8%;
+      text-align: left;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 40rem;
+      color: #555555;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      border: 1px solid #000;
+      background: #000;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #333;
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 3rem;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
-    .hero-title {
-      font-size: clamp(2.3rem, 4vw, 3.2rem);
-      font-weight: 750;
-      margin-bottom: 1rem;
-      color: #0f172a;
+    .service-card {
+      padding: 2rem;
+      border: 1px solid #eaeaea;
+      border-radius: 12px;
+      background: #fafafa;
     }
 
-    .hero-subtitle {
-      font-size: 1rem;
-      color: #4b5563;
-      margin-bottom: 1.8rem;
-      max-width: 34rem;
+    .service-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
     }
 
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .btn-primary {
-      background: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 999px;
-      padding: 0.8rem 1.6rem;
-      font-size: 0.98rem;
-      cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
-    }
-
-    .btn-primary:hover {
-      background: #1d4ed8;
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: #2563eb;
-      border-radius: 999px;
-      padding: 0.75rem 1.3rem;
-      font-size: 0.95rem;
-      border: 1px solid #bfdbfe;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .btn-secondary:hover {
-      background: #eff6ff;
-    }
-
-    .hero-note {
-      font-size: 0.85rem;
-      color: #6b7280;
-      margin-top: 0.7rem;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.09);
-      border: 1px solid #e5e7eb;
-      height: 100%;
-    }
-
-    .card h2 {
-      font-size: 1rem;
-      margin-bottom: 0.6rem;
-      color: #111827;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 600;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #4b5563;
-      margin-bottom: 0.9rem;
-    }
-
-    .label {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: #eff6ff;
-      color: #1d4ed8;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.7rem;
-    }
-
-    .steps {
-      padding: 3rem 8%;
-      background: #ffffff;
-      border-top: 1px solid #e5e7eb;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .steps h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #111827;
-    }
-
-    .steps-description {
-      color: #4b5563;
-      max-width: 32rem;
-      margin-bottom: 1.8rem;
+    .service-card p {
+      color: #555;
       font-size: 0.95rem;
     }
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .step-card {
-      background: #f9fafb;
-      border-radius: 0.9rem;
-      padding: 1.1rem 1.1rem 1.2rem;
-      border: 1px solid #e5e7eb;
-    }
-
-    .step-number {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 999px;
-      background: #2563eb;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.7rem;
-    }
-
-    .step-title {
-      font-weight: 600;
-      font-size: 0.98rem;
-      margin-bottom: 0.35rem;
-      color: #111827;
-    }
-
-    .step-text {
-      font-size: 0.87rem;
-      color: #4b5563;
-    }
-
-    footer {
-      padding: 1.8rem 8%;
-      font-size: 0.85rem;
-      color: #6b7280;
+    /* ---------- CTA ---------- */
+    .cta {
       text-align: center;
+      padding: 8rem 8%;
+      background: #fafafa;
     }
 
-    /* Chatbot bubble – opens the chat panel */
-    .chat-launcher {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 20;
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
 
-    .chat-button {
-      background: #2563eb;
-      color: #ffffff;
-      width: 3.3rem;
-      height: 3.3rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      position: relative;
+    .cta p {
+      color: #555;
+      margin-bottom: 2rem;
     }
 
-    .chat-button-pulse {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      border: 2px solid rgba(191, 219, 254, 0.9);
-      animation: pulse 1.85s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 0.8;
-      }
-      70% {
-        transform: scale(1.35);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1.35);
-        opacity: 0;
-      }
-    }
-
-    .chat-panel {
-      position: fixed;
-      bottom: 5.3rem;
-      right: 1.5rem;
-      width: 380px;
-      max-width: calc(100% - 2rem);
-      max-height: 540px;
-      background: #ffffff;
-      border-radius: 1rem;
-      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.55);
-      border: 1px solid #e5e7eb;
-      display: none; /* toggled with JS */
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 30;
-    }
-
-    .chat-header {
-      background: #0f172a;
-      color: #f9fafb;
-      padding: 0.85rem 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .chat-header-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-    }
-
-    .chat-header-subtitle {
-      font-size: 0.78rem;
-      color: #9ca3af;
-    }
-
-    .chat-close {
-      background: transparent;
-      border: none;
-      color: #e5e7eb;
-      cursor: pointer;
-      font-size: 1.1rem;
-    }
-
-    .chat-body {
-      padding: 0.9rem 1rem 1rem;
-      font-size: 0.87rem;
-      color: #111827;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      overflow-y: auto;
-      flex: 1;
-    }
-
-    .chat-message-bot {
-      align-self: flex-start;
-      background: #eff6ff;
-      border-radius: 0.75rem;
-      padding: 0.6rem 0.8rem;
-      max-width: 90%;
-      border: 1px solid #dbeafe;
-    }
-
-    .chat-quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.35rem;
-    }
-
-    .chat-pill {
-      border-radius: 999px;
-      background: #ffffff;
-      border: 1px solid #bfdbfe;
-      padding: 0.35rem 0.8rem;
-      font-size: 0.78rem;
-      cursor: pointer;
-      color: #1d4ed8;
-      white-space: nowrap;
-    }
-
-    .chat-footer {
-      padding: 0.55rem 0.7rem 0.65rem;
-      border-top: 1px solid #e5e7eb;
-      display: flex;
-      gap: 0.45rem;
-      align-items: center;
-    }
-
-    .chat-input {
-      flex: 1;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      padding: 0.5rem 0.8rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .chat-input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 1px #bfdbfe;
-    }
-
-    .chat-send {
-      border-radius: 999px;
-      border: none;
-      background: #2563eb;
-      color: white;
-      padding: 0.45rem 0.8rem;
-      font-size: 0.8rem;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 2.8rem 1.4rem;
-      }
-
-      header {
-        padding: 0.9rem 1.4rem;
-      }
-
-      .steps {
-        padding: 2.3rem 1.4rem;
-      }
-
-      footer {
-        padding: 1.5rem 1.4rem;
-      }
+    /* ---------- FOOTER ---------- */
+    footer {
+      padding: 2rem 8%;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
     }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="logo">Your Business</div>
     <nav>
-      <a href="#how-it-works">How it works</a>
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <div>
-        <div class="label">Guided by our smart assistant</div>
-        <h1 class="hero-title">Get the right information and next steps in minutes.</h1>
-        <p class="hero-subtitle">
-          Use our chat assistant to learn about our services, pricing, and the best way to move forward for your situation.
-        </p>
-        <div class="hero-cta">
-          <button class="btn-primary" id="hero-open-chat">
-            Ask the assistant
-          </button>
-          <button class="btn-secondary" onclick="document.getElementById('how-it-works').scrollIntoView({behavior: 'smooth'})">
-            See how it works
-          </button>
-        </div>
-        <p class="hero-note">
-          No forms, no waiting. Just ask a question and get guided to the next step.
-        </p>
-      </div>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Professional AI Automation, Simplified</h1>
+    <p>
+      Get instant answers, guidance, and next steps through our intelligent assistant.
+      No clutter. No confusion. Just clarity.
+    </p>
+    <button class="btn" onclick="window.botpressWebChat.open()">Chat with the Assistant</button>
+  </section>
 
-      <div class="card">
-        <h2>What the assistant can help you with</h2>
-        <p>Try asking things like:</p>
-        <ul style="font-size: 0.9rem; color: #4b5563; margin-left: 1.1rem; margin-bottom: 0.7rem;">
-          <li>“What services do you offer?”</li>
-          <li>“How do I get started?”</li>
-          <li>“What’s the best option for my situation?”</li>
-        </ul>
-        <p style="font-size: 0.86rem; color: #6b7280;">
-          Click the blue chat icon in the corner or “Ask the assistant” to begin.
-        </p>
-      </div>
-    </section>
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <h2>How It Works</h2>
+    <p style="max-width: 40rem; margin-top: 1rem; color: #555;">
+      Our assistant is designed to guide you through everything — services, pricing, and the best next steps.
+    </p>
 
-    <section id="how-it-works" class="steps">
-      <h2>How it works</h2>
-      <p class="steps-description">
-        Instead of digging through pages, talk to the assistant. It’s designed around our business so you get answers and clear next steps quickly.
-      </p>
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-number">1</div>
-          <div class="step-title">Open the chat</div>
-          <div class="step-text">
-            Click the chat bubble at the bottom‑right corner or hit “Ask the assistant” at the top of the page.
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-number">2</div>
-          <div class="step-title">Ask a question</div>
-          <div class="step-text">
-            Ask about our services, availability, pricing, or what’s right for you. The assistant responds instantly.
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-number">3</div>
-          <div class="step-title">Follow the next steps</div>
-          <div class="step-text">
-            Get guided to booking, requesting a quote, or the right page—without guessing what to click next.
-          </div>
-        </div>
+    <div class="services-grid" style="margin-top: 3rem;">
+      <div class="service-card">
+        <h3>1. Open the Chat</h3>
+        <p>Click the chat bubble or the button above.</p>
       </div>
-    </section>
-  </main>
+      <div class="service-card">
+        <h3>2. Ask Anything</h3>
+        <p>Our assistant is trained on your business and responds instantly.</p>
+      </div>
+      <div class="service-card">
+        <h3>3. Get Guided</h3>
+        <p>Receive clear next steps tailored to your needs.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- SERVICES -->
+  <section id="services">
+    <h2>Services</h2>
+    <p style="max-width: 40rem; margin-top: 1rem; color: #555;">
+      A minimal overview — your assistant can explain each service in detail.
+    </p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Automation Setup</h3>
+        <p>Streamline repetitive tasks with custom AI workflows.</p>
+      </div>
+      <div class="service-card">
+        <h3>AI Chatbots</h3>
+        <p>Deploy intelligent assistants for support, sales, and onboarding.</p>
+      </div>
+      <div class="service-card">
+        <h3>System Integrations</h3>
+        <p>Connect your tools and automate your entire ecosystem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to Begin?</h2>
+    <p>Open the assistant and get personalized guidance in seconds.</p>
+    <button class="btn" onclick="window.botpressWebChat.open()">Open Chat</button>
+  </section>
+
+  <!-- FOOTER -->
   <footer id="contact">
     © <span id="year"></span> Your Business. All rights reserved.
   </footer>
 
-  <!-- Chat launcher button -->
-  <div class="chat-launcher">
-    <button class="chat-button" id="chat-toggle">
-      <div class="chat-button-pulse"></div>
-      💬
-    </button>
-  </div>
-
-  <!-- Chat panel – THIS is where you plug in your bot -->
-  <div class="chat-panel" id="chat-panel">
-    <div class="chat-header">
-      <div>
-        <div class="chat-header-title">Business Assistant</div>
-        <div class="chat-header-subtitle">Ask about services, pricing, and next steps</div>
-      </div>
-      <button class="chat-close" id="chat-close">&times;</button>
-    </div>
-
-    <!-- ✅ REPLACE THIS BLOCK WITH YOUR BOT CODE IF YOU HAVE AN IFRAME/WIDGET -->
-    <div class="chat-body" id="chat-body">
-      <div class="chat-message-bot">
-        Hi, I’m your assistant. I can help you understand our services and guide you to the best next step.
-        <div class="chat-quick-replies">
-          <button class="chat-pill">What do you offer?</button>
-          <button class="chat-pill">How do I get started?</button>
-          <button class="chat-pill">Can you recommend something for me?</button>
-        </div>
-      </div>
-    </div>
-    <div class="chat-footer">
-      <input
-        type="text"
-        class="chat-input"
-        placeholder="Type a question to get started..."
-        id="chat-input"
-      />
-      <button class="chat-send" id="chat-send">Send</button>
-    </div>
-    <!-- ✅ END OF PLACEHOLDER CHAT – YOUR CODE CAN GO HERE -->
-  </div>
-
   <script>
-    // year
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // open/close chat
-    const chatToggle = document.getElementById("chat-toggle");
-    const chatPanel = document.getElementById("chat-panel");
-    const chatClose = document.getElementById("chat-close");
-    const heroOpenChat = document.getElementById("hero-open-chat");
-
-    function openChat() {
-      chatPanel.style.display = "flex";
-    }
-
-    function closeChat() {
-      chatPanel.style.display = "none";
-    }
-
-    chatToggle.addEventListener("click", () => {
-      if (chatPanel.style.display === "flex") {
-        closeChat();
-      } else {
-        openChat();
-      }
-    });
-
-    chatClose.addEventListener("click", closeChat);
-    heroOpenChat.addEventListener("click", openChat);
-
-    // OPTIONAL: you can hook this into your bot’s API later
-    const inputEl = document.getElementById("chat-input");
-    const sendBtn = document.getElementById("chat-send");
-    const chatBody = document.getElementById("chat-body");
-
-    function addUserMessage(text) {
-      const div = document.createElement("div");
-      div.textContent = text;
-      div.style.alignSelf = "flex-end";
-      div.style.background = "#2563eb";
-      div.style.color = "#ffffff";
-      div.style.borderRadius = "0.75rem";
-      div.style.padding = "0.6rem 0.8rem";
-      div.style.maxWidth = "90%";
-      div.style.marginTop = "0.3rem";
-      chatBody.appendChild(div);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function handleSend() {
-      const text = inputEl.value.trim();
-      if (!text) return;
-      addUserMessage(text);
-      inputEl.value = "";
-
-      // Here is where you'd send `text` to your existing bot logic
-      // and add the bot's response back into chatBody.
-    }
-
-    sendBtn.addEventListener("click", handleSend);
-    inputEl.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        handleSend();
-      }
-    });
-
-    // quick replies
-    document.addEventListener("click", (e) => {
-      if (e.target.classList.contains("chat-pill")) {
-        inputEl.value = e.target.textContent;
-        handleSend();
-      }
-    });
   </script>
+
 </body>
 </html>

@@ -1,322 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IntelliBot Systems</title>
-    <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
-    
-    <style>
-         #webchat .bpWebchat {
-    position: unset;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    max-width: 100%;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Business Name</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-  #webchat .bpFab {
-    display: none;
-  }
-        /* ---------- GLOBAL ---------- */
-        body {
-            margin: 0;
-            font-family: "Inter", sans-serif;
-            background: #ffffff;
-            color: #111;
-            line-height: 1.6;
-        }
+    body {
+      background: #f5f5f7;
+      color: #111827;
+      line-height: 1.5;
+    }
 
-        h1, h2, h3 {
-            font-weight: 600;
-            margin: 0;
-        }
+    header {
+      background: #0f172a;
+      color: #f9fafb;
+      padding: 1.2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+    header .logo {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
 
-        /* ---------- NAVBAR ---------- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            border-bottom: 1px solid #eee;
-        }
+    header nav a {
+      color: #e5e7eb;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
 
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
+    header nav a:hover {
+      color: #ffffff;
+    }
 
-        .cta-btn {
-            padding: 10px 20px;
-            border: 1px solid #111;
-            border-radius: 4px;
-            transition: 0.2s;
-        }
+    .hero {
+      padding: 4rem 8%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+    }
 
-        .cta-btn:hover {
-            background: #111;
-            color: #fff;
-        }
+    .hero-title {
+      font-size: clamp(2.3rem, 4vw, 3.2rem);
+      font-weight: 750;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
 
-        /* ---------- HERO ---------- */
-        .hero {
-            padding: 120px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: auto;
-        }
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 1.8rem;
+      max-width: 34rem;
+    }
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-        }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
 
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0;
-            animation: fadeIn 1.4s ease forwards;
-        }
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 0.8rem 1.6rem;
+      font-size: 0.98rem;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+    }
 
-        .hero-btn {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 12px 28px;
-            border: 1px solid #111;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: 0.2s;
-            opacity: 0;
-            animation: fadeIn 1.8s ease forwards;
-        }
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
 
-        .hero-btn:hover {
-            background: #111;
-            color: #fff;
-        }
+    .btn-secondary {
+      background: transparent;
+      color: #2563eb;
+      border-radius: 999px;
+      padding: 0.75rem 1.3rem;
+      font-size: 0.95rem;
+      border: 1px solid #bfdbfe;
+      cursor: pointer;
+      font-weight: 500;
+    }
 
-        /* ---------- FEATURES ---------- */
-        .features {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
+    .btn-secondary:hover {
+      background: #eff6ff;
+    }
 
-        .features h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2rem;
-        }
+    .hero-note {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.7rem;
+    }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 40px;
-        }
+    .card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.09);
+      border: 1px solid #e5e7eb;
+      height: 100%;
+    }
 
-        .feature-card {
-            padding: 20px;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            transition: 0.2s;
-            opacity: 0;
-        }
+    .card h2 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+      color: #111827;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
 
-        .feature-card:hover {
-            border-color: #111;
-        }
+    .card p {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 0.9rem;
+    }
 
-        /* ---------- PRICING ---------- */
-        .pricing {
-            padding: 80px 20px;
-            background: #fafafa;
-        }
+    .label {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.7rem;
+    }
 
-        .pricing h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2rem;
-        }
+    .steps {
+      padding: 3rem 8%;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
 
-        .pricing-grid {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 40px;
-        }
+    .steps h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #111827;
+    }
 
-        .price-card {
-            padding: 30px;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            text-align: center;
-            transition: 0.2s;
-            opacity: 0;
-        }
+    .steps-description {
+      color: #4b5563;
+      max-width: 32rem;
+      margin-bottom: 1.8rem;
+      font-size: 0.95rem;
+    }
 
-        .price-card:hover {
-            border-color: #111;
-        }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
 
-        .price {
-            font-size: 1.8rem;
-            margin: 20px 0;
-        }
+    .step-card {
+      background: #f9fafb;
+      border-radius: 0.9rem;
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid #e5e7eb;
+    }
 
-        .price-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 22px;
-            border: 1px solid #111;
-            border-radius: 4px;
-            transition: 0.2s;
-        }
+    .step-number {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
 
-        .price-btn:hover {
-            background: #111;
-            color: #fff;
-        }
+    .step-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+      color: #111827;
+    }
 
-        /* ---------- FOOTER ---------- */
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            color: #666;
-        }
+    .step-text {
+      font-size: 0.87rem;
+      color: #4b5563;
+    }
 
-        /* ---------- ANIMATIONS ---------- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    footer {
+      padding: 1.8rem 8%;
+      font-size: 0.85rem;
+      color: #6b7280;
+      text-align: center;
+    }
 
-        .fade {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.6s ease;
-        }
+    /* Chatbot bubble – opens the chat panel */
+    .chat-launcher {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 20;
+    }
 
-        .fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    .chat-button {
+      background: #2563eb;
+      color: #ffffff;
+      width: 3.3rem;
+      height: 3.3rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      position: relative;
+    }
+
+    .chat-button-pulse {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 2px solid rgba(191, 219, 254, 0.9);
+      animation: pulse 1.85s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      70% {
+        transform: scale(1.35);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1.35);
+        opacity: 0;
+      }
+    }
+
+    .chat-panel {
+      position: fixed;
+      bottom: 5.3rem;
+      right: 1.5rem;
+      width: 380px;
+      max-width: calc(100% - 2rem);
+      max-height: 540px;
+      background: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.55);
+      border: 1px solid #e5e7eb;
+      display: none; /* toggled with JS */
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 30;
+    }
+
+    .chat-header {
+      background: #0f172a;
+      color: #f9fafb;
+      padding: 0.85rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .chat-header-subtitle {
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .chat-close {
+      background: transparent;
+      border: none;
+      color: #e5e7eb;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .chat-body {
+      padding: 0.9rem 1rem 1rem;
+      font-size: 0.87rem;
+      color: #111827;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .chat-message-bot {
+      align-self: flex-start;
+      background: #eff6ff;
+      border-radius: 0.75rem;
+      padding: 0.6rem 0.8rem;
+      max-width: 90%;
+      border: 1px solid #dbeafe;
+    }
+
+    .chat-quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.35rem;
+    }
+
+    .chat-pill {
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid #bfdbfe;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+      color: #1d4ed8;
+      white-space: nowrap;
+    }
+
+    .chat-footer {
+      padding: 0.55rem 0.7rem 0.65rem;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      gap: 0.45rem;
+      align-items: center;
+    }
+
+    .chat-input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .chat-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px #bfdbfe;
+    }
+
+    .chat-send {
+      border-radius: 999px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 2.8rem 1.4rem;
+      }
+
+      header {
+        padding: 0.9rem 1.4rem;
+      }
+
+      .steps {
+        padding: 2.3rem 1.4rem;
+      }
+
+      footer {
+        padding: 1.5rem 1.4rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
+  <header>
+    <div class="logo">Your Business</div>
     <nav>
-        <div class="logo">IntelliBot Systems</div>
-        <a class="cta-btn" href="#pricing">Get Started</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </header>
 
+  <main>
     <section class="hero">
-        <h1>Smarter FAQ Automation for Modern Businesses</h1>
-        <p>Minimal, fast, and intelligent. IntelliBot Systems builds clean, efficient FAQ bots that reduce support load and improve customer experience.</p>
-        <a href="#pricing" class="hero-btn">Build My Bot</a>
-    </section>
-
-    <section class="features">
-        <h2>What We Offer</h2>
-
-        <div class="feature-grid">
-            <div class="feature-card fade">
-                <h3>Instant Answers</h3>
-                <p>Provide customers with immediate responses without overwhelming your team.</p>
-            </div>
-
-            <div class="feature-card fade">
-                <h3>Clean Integration</h3>
-                <p>Embed your bot anywhere with a simple, lightweight script.</p>
-            </div>
-
-            <div class="feature-card fade">
-                <h3>Smart Training</h3>
-                <p>Your bot learns from your content and improves over time.</p>
-            </div>
-
-            <div class="feature-card fade">
-                <h3>Zero Clutter</h3>
-                <p>A minimalist interface that blends seamlessly into your brand.</p>
-            </div>
+      <div>
+        <div class="label">Guided by our smart assistant</div>
+        <h1 class="hero-title">Get the right information and next steps in minutes.</h1>
+        <p class="hero-subtitle">
+          Use our chat assistant to learn about our services, pricing, and the best way to move forward for your situation.
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary" id="hero-open-chat">
+            Ask the assistant
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('how-it-works').scrollIntoView({behavior: 'smooth'})">
+            See how it works
+          </button>
         </div>
+        <p class="hero-note">
+          No forms, no waiting. Just ask a question and get guided to the next step.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>What the assistant can help you with</h2>
+        <p>Try asking things like:</p>
+        <ul style="font-size: 0.9rem; color: #4b5563; margin-left: 1.1rem; margin-bottom: 0.7rem;">
+          <li>“What services do you offer?”</li>
+          <li>“How do I get started?”</li>
+          <li>“What’s the best option for my situation?”</li>
+        </ul>
+        <p style="font-size: 0.86rem; color: #6b7280;">
+          Click the blue chat icon in the corner or “Ask the assistant” to begin.
+        </p>
+      </div>
     </section>
 
-    <section class="pricing" id="pricing">
-        <h2>Pricing</h2>
-
-        <div class="pricing-grid">
-            <div class="price-card fade">
-                <h3>Starter</h3>
-                <div class="price">$49/mo</div>
-                <p>1 FAQ Bot</p>
-                <p>Email Support</p>
-                <a class="price-btn" href="#">Choose Plan</a>
-            </div>
-
-            <div class="price-card fade">
-                <h3>Pro</h3>
-                <div class="price">$99/mo</div>
-                <p>3 FAQ Bots</p>
-                <p>Advanced Training</p>
-                <a class="price-btn" href="#">Choose Plan</a>
-            </div>
-
-            <div class="price-card fade">
-                <h3>Enterprise</h3>
-                <div class="price">Custom</div>
-                <p>Unlimited Bots</p>
-                <p>Priority Support</p>
-                <a class="price-btn" href="#">Contact Us</a>
-            </div>
+    <section id="how-it-works" class="steps">
+      <h2>How it works</h2>
+      <p class="steps-description">
+        Instead of digging through pages, talk to the assistant. It’s designed around our business so you get answers and clear next steps quickly.
+      </p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-title">Open the chat</div>
+          <div class="step-text">
+            Click the chat bubble at the bottom‑right corner or hit “Ask the assistant” at the top of the page.
+          </div>
         </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-title">Ask a question</div>
+          <div class="step-text">
+            Ask about our services, availability, pricing, or what’s right for you. The assistant responds instantly.
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-title">Follow the next steps</div>
+          <div class="step-text">
+            Get guided to booking, requesting a quote, or the right page—without guessing what to click next.
+          </div>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        © 2025 IntelliBot Systems — All Rights Reserved
-    </footer>
+  <footer id="contact">
+    © <span id="year"></span> Your Business. All rights reserved.
+  </footer>
 
-    <script>
-        const fadeEls = document.querySelectorAll(".fade");
+  <!-- Chat launcher button -->
+  <div class="chat-launcher">
+    <button class="chat-button" id="chat-toggle">
+      <div class="chat-button-pulse"></div>
+      💬
+    </button>
+  </div>
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, { threshold: 0.2 });
+  <!-- Chat panel – THIS is where you plug in your bot -->
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div>
+        <div class="chat-header-title">Business Assistant</div>
+        <div class="chat-header-subtitle">Ask about services, pricing, and next steps</div>
+      </div>
+      <button class="chat-close" id="chat-close">&times;</button>
+    </div>
 
-        fadeEls.forEach(el => observer.observe(el));
-    </script>
-<div id="webchat" style="width: 500px; height: 500px;"></div>
+    <!-- ✅ REPLACE THIS BLOCK WITH YOUR BOT CODE IF YOU HAVE AN IFRAME/WIDGET -->
+    <div class="chat-body" id="chat-body">
+      <div class="chat-message-bot">
+        Hi, I’m your assistant. I can help you understand our services and guide you to the best next step.
+        <div class="chat-quick-replies">
+          <button class="chat-pill">What do you offer?</button>
+          <button class="chat-pill">How do I get started?</button>
+          <button class="chat-pill">Can you recommend something for me?</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input
+        type="text"
+        class="chat-input"
+        placeholder="Type a question to get started..."
+        id="chat-input"
+      />
+      <button class="chat-send" id="chat-send">Send</button>
+    </div>
+    <!-- ✅ END OF PLACEHOLDER CHAT – YOUR CODE CAN GO HERE -->
+  </div>
 
-<!-- In your <body> tag -->
-<script>
-  window.botpress.on("webchat:ready", () => {
-    window.botpress.open();
-  });
-  window.botpress.init({
-  "botId": "554532cd-4085-498a-803e-2f998c5952bf",
-  "configuration": {
-    "website": {},
-    "email": {},
-    "phone": {},
-    "termsOfService": {},
-    "privacyPolicy": {}
-  },
-  "clientId": "68438a38-9132-453f-b31c-522a1cfd845f",
-  "selector": "#webchat"
-});
-</script>
-    
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // open/close chat
+    const chatToggle = document.getElementById("chat-toggle");
+    const chatPanel = document.getElementById("chat-panel");
+    const chatClose = document.getElementById("chat-close");
+    const heroOpenChat = document.getElementById("hero-open-chat");
+
+    function openChat() {
+      chatPanel.style.display = "flex";
+    }
+
+    function closeChat() {
+      chatPanel.style.display = "none";
+    }
+
+    chatToggle.addEventListener("click", () => {
+      if (chatPanel.style.display === "flex") {
+        closeChat();
+      } else {
+        openChat();
+      }
+    });
+
+    chatClose.addEventListener("click", closeChat);
+    heroOpenChat.addEventListener("click", openChat);
+
+    // OPTIONAL: you can hook this into your bot’s API later
+    const inputEl = document.getElementById("chat-input");
+    const sendBtn = document.getElementById("chat-send");
+    const chatBody = document.getElementById("chat-body");
+
+    function addUserMessage(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      div.style.alignSelf = "flex-end";
+      div.style.background = "#2563eb";
+      div.style.color = "#ffffff";
+      div.style.borderRadius = "0.75rem";
+      div.style.padding = "0.6rem 0.8rem";
+      div.style.maxWidth = "90%";
+      div.style.marginTop = "0.3rem";
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function handleSend() {
+      const text = inputEl.value.trim();
+      if (!text) return;
+      addUserMessage(text);
+      inputEl.value = "";
+
+      // Here is where you'd send `text` to your existing bot logic
+      // and add the bot's response back into chatBody.
+    }
+
+    sendBtn.addEventListener("click", handleSend);
+    inputEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        handleSend();
+      }
+    });
+
+    // quick replies
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("chat-pill")) {
+        inputEl.value = e.target.textContent;
+        handleSend();
+      }
+    });
+  </script>
 </body>
 </html>
